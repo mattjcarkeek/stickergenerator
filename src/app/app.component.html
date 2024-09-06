@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Sticker Generator</h1>
+  <div class="input-container">
+    <input [(ngModel)]="systemCode" placeholder="Enter System Code" class="e-corner">
+    <select [(ngModel)]="zone" class="e-corner">
+      <option *ngFor="let z of zones" [value]="z">Zone {{z}}</option>
+    </select>
+    <button (click)="generateQRCode()" class="go-button e-corner">Go</button>
+  </div>
+  <div *ngIf="isDownloading || isCompleted" class="result-container">
+    <h3>Your QR Code is downloading</h3>
+    <button *ngIf="isCompleted" (click)="resetPage()" class="reset-button">Do Another One</button>
+  </div>
+</div>
