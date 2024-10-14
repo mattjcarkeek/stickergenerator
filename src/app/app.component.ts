@@ -49,7 +49,7 @@ export class AppComponent {
         const fullUrl = `${decryptedBaseUrl}?system=${this.qrCodeLink}`;
 
         const qrCodeDataUrl = await QRCode.toDataURL(fullUrl, {
-          width: 350,
+          width: 320,
           margin: 0,
           color: {
             dark: '#000000FF',
@@ -67,12 +67,12 @@ export class AppComponent {
         const ctx = canvas.getContext('2d');
         if (!ctx) throw new Error('Could not get canvas context');
 
-        ctx.drawImage(img, (canvas.width - img.width) / 2, 0);
+        ctx.drawImage(img, (canvas.width - img.width) / 2, 10);
 
         ctx.fillStyle = 'black';
-        ctx.font = '15px Arial';
+        ctx.font = 'bold 25px Arial';
         ctx.textAlign = 'center';
-        ctx.fillText(`${this.systemCode}`, canvas.width / 2, canvas.height - 5);
+        ctx.fillText(`${this.systemCode}`, canvas.width / 2, canvas.height - 15);
 
         const blob = await new Promise<Blob>(resolve =>
           canvas.toBlob(blob => resolve(blob!), 'image/png')
